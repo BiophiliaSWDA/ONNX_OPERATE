@@ -1,6 +1,6 @@
 import os
 
-ROOT_PATH = '/Users/wuduo/Documents/BioWork/DifferentialTestingofDLFrameworks/onnx2x'
+ROOT_PATH = '/Users/wuduo/Documents/BioWork/DifferentialTestingofDLFrameworks/ONNX_OPERATE/onnx2x'
 
 DATASET_PATH = os.path.join(ROOT_PATH, 'database')
 
@@ -13,3 +13,5 @@ OPS_MAPPINGS_PATH = os.path.join(DATASET_PATH, 'op_types_mapping.json')
 PARAMETER_INFOS_PATH = os.path.join(DATASET_PATH, 'parameter_infos.json')
 
 PARAMETER_MAPPINGS_PATH = os.path.join(DATASET_PATH, 'parameter_mapping.json')
+
+TEST_CODE_PATH = os.path.join(ROOT_PATH, 'test_code')
