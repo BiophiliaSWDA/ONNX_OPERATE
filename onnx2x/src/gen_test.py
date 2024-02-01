@@ -7,10 +7,12 @@
 @Email   : BiophiliaSWDA@163.com
 """
 import re
+import subprocess
 import time
 
-from src.Database import Database
+from onnx2x.src.Database import Database
 
+from onnx2x.config.config_path import TEST_CODE_PATH
 
 d = Database()
 op_list = d.get_onnx_list()
@@ -24,8 +26,7 @@ tensor_pattern = [
 ]
 
 
-head = """
-import tensorflow as tf
+head = """import tensorflow as tf
 
 tensor_pattern = [
     'api(tensor, *args)'
@@ -49,8 +50,8 @@ tensors = [
 ]
 
 
-def gen_test(api, pattern, requireds, tensor) -> str:
-    api_name = api.replace('.', '_') + '_' + apis.index(api).__str__() + '_' + tensor
+def gen_test(api, pattern, requireds, tensor, i) -> str:
+    api_name = api.replace('.', '_') + '_' + i.__str__() + '_' + tensor
     parameters = ', '.join(['1' for _ in range(requireds)])
 
     start = f'# {api} {pattern}\n' \
@@ -90,10 +91,33 @@ def gen_test(api, pattern, requireds, tensor) -> str:
     return code
 
 
-if __name__ == "__main__":
-    body = ''
+def gen_test_(api, pattern, requireds, tensor, i) -> str:
+    api_name = api.replace('.', '_') + '_' + i.__str__() + '_' + tensor
+    parameters = ', '.join(['1' for _ in range(requireds)])
+
+    if pattern == tensor_pattern[0]:
+        # 'api(tensor, *args)'
+        code = f'{api_name} = {api}({tensor}, {parameters})\n'
+    elif pattern == tensor_pattern[1]:
+        # 'api(tensor+, *args)
+        code = f'{api_name} = {api}({tensor}, {tensor}, {parameters})\n'
+    elif pattern == tensor_pattern[2]:
+        # 'api(*args)(tensor)'
+        code = f'{api_name} = {api}({parameters})({tensor})\n'
+    elif pattern == tensor_pattern[3]:
+        # 'api(*args)([tensor+])'
+        code = f'{api_name} = {api}({parameters})([{tensor}, {tensor}])\n'
+    elif pattern == tensor_pattern[4]:
+        # 'api([tensor+], *args)'
+        code = f'{api_name} = {api}([{tensor}, {tensor}], {parameters})\n'
+    else:
+        code = ''
+
+    return code
+
+
+def update_full_table_mapping_():
     skip = ['GRU', 'LSTM', 'RNN']
-    tmp_pattern = set()
     for onnx in op_list:
         if onnx in skip:
             continue
@@ -116,12 +140,23 @@ if __name__ == "__main__":
 
             requireds = d.get_onnx2x_para_requireds(onnx, api)
 
-            code = gen_test(api, pattern, requireds, tensor)
-            body += code
+            code = gen_test_(api, pattern, requireds, tensor, i)
 
-    with open(f'/Users/wuduo/Documents/BioWork/DifferentialTestingofDLFrameworks/onnx2x/res/out_{time.time().__str__()}.py', 'w') as f:
-        f.write(head)
-        f.write('\n')
-        f.write(body)
+            api_test_code_path = f'{TEST_CODE_PATH}/{api}.py'
+            with open(api_test_code_path, 'w') as f:
+                f.write(head)
+                f.write('\n')
+                f.write(code)
 
-    # print(tmp_pattern)
+            print('写入至文件', api_test_code_path)
+
+            try:
+                subprocess.run(['python', api_test_code_path])
+                full_table_mapping = True
+            except:
+                full_table_mapping = None
+
+            d.update_full_table_mapping(onnx, full_table_mapping)
+
+
+# update_full_table_mapping_()

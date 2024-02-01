@@ -2064,21 +2064,13 @@
       }
     },
     "pytorch": {
-      "torch.amax": {
-        "dim": {
-          "def": "the dimension or dimensions to reduce.",
-          "type": "int or tuple of ints"
+      "torch.maximum": {
+        "other": {
+          "def": "the second input tensor",
+          "type": "tensor"
         },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
-        },
-        "keepdim": {
-          "def": "whether the output tensor has dim retained or not.",
-          "type": "bool"
-        },
-        "out": {
-          "def": "the output tensor.",
           "type": "tensor"
         }
       }
@@ -2377,20 +2369,12 @@
     },
     "pytorch": {
       "torch.amin": {
-        "dim": {
-          "def": "the dimension or dimensions to reduce.",
-          "type": "int or tuple of ints"
-        },
         "input": {
           "def": "the input tensor.",
           "type": "tensor"
         },
-        "keepdim": {
-          "def": "whether the output tensor has dim retained or not.",
-          "type": "bool"
-        },
-        "out": {
-          "def": "the output tensor.",
+        "other": {
+          "def": "the second input tensor",
           "type": "tensor"
         }
       }

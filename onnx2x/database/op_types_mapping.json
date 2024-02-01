@@ -67,7 +67,7 @@
         "tf.keras.layers.AveragePooling3D",
         "tf.keras.layers.AveragePooling1D"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -248,7 +248,7 @@
         "tf.keras.layers.Conv3D",
         "tf.keras.layers.Conv1D"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -294,7 +294,7 @@
         "tf.keras.layers.Conv3DTranspose",
         "tf.keras.layers.Conv2DTranspose"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -509,7 +509,7 @@
       "apis": [
         "tf.keras.layers.GRU"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -661,7 +661,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -689,7 +689,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -719,7 +719,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -749,7 +749,7 @@
       "apis": [
         "tf.raw_ops.LRN"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -773,7 +773,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -867,7 +867,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -898,7 +898,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -915,7 +915,7 @@
     },
     "pytorch": {
       "apis": [
-        "torch.amax"
+        "torch.maximum"
       ],
       "full_table_mapping": null,
       "patterns": [
@@ -972,7 +972,7 @@
         "tf.keras.layers.MaxPooling2D",
         "tf.keras.layers.MaxPooling1D"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -1014,7 +1014,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -1031,7 +1031,7 @@
     },
     "pytorch": {
       "apis": [
-        "torch.amin"
+        "torch.minimum"
       ],
       "full_table_mapping": null,
       "patterns": [
@@ -1156,7 +1156,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -1242,7 +1242,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   },
@@ -1832,7 +1832,7 @@
     },
     "tensorflow": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     }
   }
