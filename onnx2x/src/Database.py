@@ -47,6 +47,68 @@ class Database:
         with open(p.PARAMETER_INFOS_PATH, 'r') as onnx2x_para_infos_file:
             self.__onnx2x_para_infos = json.load(onnx2x_para_infos_file)
 
+    def check(self):
+        print('INFO: CHECK API MAPPINGS...\nFRAMEWORK: {}'.format(self.__framework))
+        self.__check_api_mappings()
+        print('INFO: CHECK PARAMETER INFOMATION...\nFRAMEWORK: {}'.format(self.__framework))
+        self.__check_para_infos()
+        print('INFO: CHECK PARAMETER MAPPINGS...\nFRAMEWORK: {}'.format(self.__framework))
+        self.__check_para_mappings()
+
+    def __check_api_mappings(self):
+        _onnx2x_api_mappings = self.__onnx2x_api_mappings
+        _onnx2x_para_mappings = self.__onnx2x_para_mappings
+        _onnx2x_para_infos = self.__onnx2x_para_infos
+
+        for _onnx in _onnx2x_api_mappings.items():
+            _op_type = _onnx[0]
+            skip = ['GRU', 'LSTM', 'RNN']
+            if _op_type in skip:
+                continue
+            _apis = _onnx[1][self.__framework]['apis']
+            for _api in _apis:
+                if _api not in _onnx2x_para_mappings[_op_type][self.__framework].keys():
+                    print(f'参数映射表中没有{_op_type}算子在{self.__framework}框架下的{_api}')
+
+                if _api not in _onnx2x_para_infos[_op_type][self.__framework].keys():
+                    print(f'参数信息表中没有{_op_type}算子在{self.__framework}框架下的{_api}')
+
+    def __check_para_infos(self):
+        _onnx2x_api_mappings = self.__onnx2x_api_mappings
+        _onnx2x_para_mappings = self.__onnx2x_para_mappings
+        _onnx2x_para_infos = self.__onnx2x_para_infos
+
+        for _onnx in _onnx2x_para_infos.items():
+            _op_type = _onnx[0]
+            skip = ['GRU', 'LSTM', 'RNN']
+            if _op_type in skip:
+                continue
+            _apis = _onnx[1][self.__framework].keys()
+            for _api in _apis:
+                if _api not in _onnx2x_para_mappings[_op_type][self.__framework].keys():
+                    print(f'参数映射表中没有{_op_type}算子在{self.__framework}框架下的{_api}')
+
+                if _api not in _onnx2x_api_mappings[_op_type][self.__framework]['apis']:
+                    print(f'函数映射表中没有{_op_type}算子在{self.__framework}框架下的{_api}')
+
+    def __check_para_mappings(self):
+        _onnx2x_api_mappings = self.__onnx2x_api_mappings
+        _onnx2x_para_mappings = self.__onnx2x_para_mappings
+        _onnx2x_para_infos = self.__onnx2x_para_infos
+
+        for _onnx in _onnx2x_para_mappings.items():
+            _op_type = _onnx[0]
+            skip = ['GRU', 'LSTM', 'RNN']
+            if _op_type in skip:
+                continue
+            _apis = _onnx[1][self.__framework].keys()
+            for _api in _apis:
+                if _api not in _onnx2x_para_infos[_op_type][self.__framework].keys():
+                    print(f'参数信息表中没有{_op_type}算子在{self.__framework}框架下的{_api}')
+
+                if _api not in _onnx2x_api_mappings[_op_type][self.__framework]['apis']:
+                    print(f'函数映射表中没有{_op_type}算子在{self.__framework}框架下的{_api}')
+
     def get_onnx_list(self):
         return self.__onnx_list
 
@@ -55,6 +117,15 @@ class Database:
 
     def get_onnx2x_patterns(self, onnx: str):
         return self.__onnx2x_api_mappings[onnx][self.__framework]['patterns']
+
+    def get_all_patterns(self) -> list:
+        _patterns = set()
+        for _op_type in self.__onnx_list:
+            _tmp_patterns = self.get_onnx2x_patterns(_op_type)
+            for _pattern in _tmp_patterns:
+                _patterns.add(_pattern)
+
+        return list(_patterns)
 
     def get_onnx2x_para_requireds(self, onnx: str, api: str) -> int:
         requireds = 0
@@ -124,9 +195,12 @@ class Database:
 
 
 d = Database()
-d.set_framework('tensorflow') # default: pytorch
 
-# d.update(False)
+# d.check()
+# d.set_framework('tensorflow') # default: pytorch
+
+d.update(True)
 # print(d.get_onnx2x_apis('Add'))
 # print(d.get_onnx2x_patterns('Add'))
 # print(d.get_onnx2x_para_requireds('AveragePool', 'tf.keras.layers.AveragePooling1D'))
+# print(d.get_all_patterns())

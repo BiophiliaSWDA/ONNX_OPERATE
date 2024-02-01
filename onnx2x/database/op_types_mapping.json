@@ -324,7 +324,7 @@
     },
     "pytorch": {
       "apis": [
-        "F.dropout",
+        "torch.nn.functional.dropout",
         "torch.nn.Dropout",
         "torch.nn.Dropout2d",
         "torch.nn.Dropout1d",
@@ -544,7 +544,7 @@
         "tf.keras.activations.gelu",
         "tf.nn.gelu"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": false,
       "patterns": [
         "api(tensor, *args)",
         "api(tensor, *args)"
@@ -792,7 +792,7 @@
       "apis": [
         "torch.nn.LayerNorm"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -890,7 +890,7 @@
         "torch.nn.LPPool1d",
         "torch.nn.LPPool2d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)"
@@ -1005,11 +1005,11 @@
         "torch.nn.MaxUnpool2d",
         "torch.nn.MaxUnpool1d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": false,
       "patterns": [
-        "api(*args)(tensor)",
-        "api(*args)(tensor)",
-        "api(*args)(tensor)"
+        "api(*args)(tensor, *args)",
+        "api(*args)(tensor, *args)",
+        "api(*args)(tensor, *args)"
       ]
     },
     "tensorflow": {
@@ -1124,9 +1124,13 @@
       "patterns": []
     },
     "pytorch": {
-      "apis": [],
+      "apis": [
+        "torch.mul"
+      ],
       "full_table_mapping": null,
-      "patterns": []
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "tensorflow": {
       "apis": [
@@ -1443,13 +1447,11 @@
     },
     "pytorch": {
       "apis": [
-        "F.relu",
-        "torch.nn.ReLU",
-        "tf.keras.layers.ReLU"
+        "torch.nn.functional.relu",
+        "torch.nn.ReLU"
       ],
       "full_table_mapping": null,
       "patterns": [
-        "api(tensor, *args)",
         "api(tensor, *args)",
         "api(*args)(tensor)"
       ]
@@ -1825,7 +1827,7 @@
       "apis": [
         "torch.nn.Upsample"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)"
       ]

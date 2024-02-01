@@ -2,10 +2,11 @@
 
 """
 @Title   : 
-@Time    : 2024/1/29 16:07
+@Time    : 2024/2/1
 @Author  : Biophilia Wu
 @Email   : BiophiliaSWDA@163.com
 """
+import os.path
 import re
 import subprocess
 import time
@@ -14,39 +15,38 @@ from onnx2x.src.Database import Database
 
 from onnx2x.config.config_path import TEST_CODE_PATH
 
+
 d = Database()
 op_list = d.get_onnx_list()
 
 tensor_pattern = [
     'api(tensor, *args)',
     'api(tensor+, *args)',
-    'api(*args)(tensor)',
-    'api(*args)([tensor+])',
     'api([tensor+], *args)',
+    'api(*args)(tensor)'
 ]
 
 
-head = """import tensorflow as tf
+head = """import torch
 
 tensor_pattern = [
-    'api(tensor, *args)'
-    'api(tensor+, *args)',
-    'api(*args)(tensor)',
-    'api(*args)([tensor+])',
-    'api([tensor+], *args)',
+    'api(tensor, *args)', 
+    'api(tensor+, *args)', 
+    'api([tensor+], *args)', 
+    'api(*args)(tensor)'
 ]
 
-tf_tensor1 = tf.ones(shape=(1, 4), dtype=tf.float32)
-tf_tensor2 = tf.ones(shape=(1, 1, 4), dtype=tf.float32)
-tf_tensor3 = tf.ones(shape=(1, 1, 1, 4), dtype=tf.float32)
-tf_tensor4 = tf.ones(shape=(1, 1, 1, 1, 4), dtype=tf.float32)
+torch_tensor1 = torch.randn(1, 4)
+torch_tensor2 = torch.randn(1, 1, 4)
+torch_tensor3 = torch.randn(1, 1, 1, 4)
+torch_tensor4 = torch.randn(1, 1, 1, 1, 4)
 """
 
 tensors = [
-    'tf_tensor1',
-    'tf_tensor2',
-    'tf_tensor3',
-    'tf_tensor4'
+    'torch_tensor1',
+    'torch_tensor2',
+    'torch_tensor3',
+    'torch_tensor4'
 ]
 
 
@@ -70,17 +70,12 @@ def gen_test(api, pattern, requireds, tensor, i) -> str:
         code = f'{start}' \
                f'   {api_name} = {api}({tensor}, {tensor}, {parameters})\n' \
                f'{end}\n'
-    elif pattern == tensor_pattern[2]:
+    elif pattern == tensor_pattern[3]:
         # 'api(*args)(tensor)'
         code = f'{start}' \
                f'   {api_name} = {api}({parameters})({tensor})\n' \
                f'{end}\n'
-    elif pattern == tensor_pattern[3]:
-        # 'api(*args)([tensor+])'
-        code = f'{start}' \
-               f'   {api_name} = {api}({parameters})([{tensor}, {tensor}])\n' \
-               f'{end}\n'
-    elif pattern == tensor_pattern[4]:
+    elif pattern == tensor_pattern[2]:
         # 'api([tensor+], *args)'
         code = f'{start}' \
                f'   {api_name} = {api}([{tensor}, {tensor}], {parameters})\n' \
@@ -89,6 +84,45 @@ def gen_test(api, pattern, requireds, tensor, i) -> str:
         code = ''
 
     return code
+
+
+def gen_code():
+    body = ''
+    skip = ['GRU', 'LSTM', 'RNN']
+    for onnx in op_list:
+        if onnx in skip:
+            continue
+        apis = d.get_onnx2x_apis(onnx)
+        patterns = d.get_onnx2x_patterns(onnx)
+        # for p in patterns:
+        #     tmp_pattern.add(p)
+        # continue
+
+        for api in apis:
+            num_pattern = re.compile(r'\dd', re.S)
+            dim = num_pattern.findall(api)
+            if dim:
+                dim = dim[0].replace('d', '')
+                tensor = tensors[int(dim)]
+            else:
+                tensor = tensors[2]
+            i = apis.index(api)
+            pattern = patterns[i]
+
+            requireds = d.get_onnx2x_para_requireds(onnx, api)
+
+            code = gen_test(api, pattern, requireds, tensor, i)
+
+            body += code
+
+    with open(os.path.join(TEST_CODE_PATH, 'torch_test_code.py'), 'w') as torch_test_code:
+        torch_test_code.write(head)
+        torch_test_code.write('\n')
+        torch_test_code.write(body)
+        torch_test_code.write('\n')
+
+
+gen_code()
 
 
 def gen_test_(api, pattern, requireds, tensor, i) -> str:
@@ -142,7 +176,7 @@ def update_full_table_mapping_():
 
             code = gen_test_(api, pattern, requireds, tensor, i)
 
-            api_test_code_path = f'{TEST_CODE_PATH}/{api}.py'
+            api_test_code_path = f'{TEST_CODE_PATH}/tf/{api}.py'
             with open(api_test_code_path, 'w') as f:
                 f.write(head)
                 f.write('\n')

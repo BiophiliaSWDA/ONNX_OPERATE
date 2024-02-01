@@ -14,19 +14,23 @@
       "torch.add": {
         "alpha": {
           "def": "the multiplier for other.",
-          "type": "number"
+          "type": "number",
+          "isRequired": false
         },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         },
         "other": {
           "def": "the tensor or number to add to input.",
-          "type": "tensor or number"
+          "type": "tensor",
+          "isRequired": true
         },
         "out": {
           "def": "the output tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": false
         }
       }
     },
@@ -69,75 +73,92 @@
       "torch.nn.AvgPool1d": {
         "ceil_mode": {
           "def": "when True, will use ceil instead of floor to compute the output shape",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "count_include_pad": {
           "def": "when True, will include the zero-padding in the averaging calculation",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "kernel_size": {
           "def": "the size of the window",
-          "type": "unionint tupleint"
+          "type": "ints",
+          "isRequired": true
         },
         "padding": {
           "def": "implicit zero padding to be added on both sides",
-          "type": "unionint tupleint"
+          "type": "ints",
+          "isRequired": false
         },
         "stride": {
           "def": "the stride of the window",
-          "type": "unionint tupleint"
+          "type": "ints",
+          "isRequired": false
         }
       },
       "torch.nn.AvgPool2d": {
         "ceil_mode": {
           "def": "when True, will use ceil instead of floor to compute the output shape",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "count_include_pad": {
           "def": "when True, will include the zero-padding in the averaging calculation",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "divisor_override": {
           "def": "if specified, it will be used as divisor, otherwise size of the pooling region will be used.",
-          "type": "optionalint"
+          "type": "optionalint",
+          "isRequired": false
         },
         "kernel_size": {
           "def": "the size of the window",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": true
         },
         "padding": {
           "def": "implicit zero padding to be added on both sides",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": false
         },
         "stride": {
           "def": "the stride of the window",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": false
         }
       },
       "torch.nn.AvgPool3d": {
         "ceil_mode": {
           "def": "when True, will use ceil instead of floor to compute the output shape",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "count_include_pad": {
           "def": "when True, will include the zero-padding in the averaging calculation",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "divisor_override": {
           "def": "if specified, it will be used as divisor, otherwise kernel_size will be used",
-          "type": "optionalint"
+          "type": "optionalint",
+          "isRequired": false
         },
         "kernel_size": {
           "def": "the size of the window",
-          "type": "unionint tupleint int int"
+          "type": "unionint tupleint int int",
+          "isRequired": true
         },
         "padding": {
           "def": "implicit zero padding to be added on all three sides",
-          "type": "unionint tupleint int int"
+          "type": "unionint tupleint int int",
+          "isRequired": false
         },
         "stride": {
           "def": "the stride of the window",
-          "type": "unionint tupleint int int"
+          "type": "unionint tupleint int int",
+          "isRequired": false
         }
       }
     },
@@ -229,67 +250,82 @@
       "torch.nn.BatchNorm1d": {
         "affine": {
           "def": "a boolean value that when set to True, this module has learnable affine parameters",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "eps": {
           "def": "a value added to the denominator for numerical stability",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "momentum": {
           "def": "the value used for the running_mean and running_var computation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "num_features": {
           "def": "number of features or channels CCC of the input",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "track_running_stats": {
           "def": "a boolean value that when set to True, this module tracks the running mean and variance, and when set to False, this module does not track such statistics, and initializes statistics buffers running_mean and running_var as None",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       },
       "torch.nn.BatchNorm2d": {
         "affine": {
           "def": "a boolean value that when set to True, this module has learnable affine parameters",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "eps": {
           "def": "a value added to the denominator for numerical stability",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "momentum": {
           "def": "the value used for the running_mean and running_var computation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "num_features": {
           "def": "CCC from an expected input of size (N,C,H,W)(N, C, H, W)(N,C,H,W)",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "track_running_stats": {
           "def": "a boolean value that when set to True, this module tracks the running mean and variance, and when set to False, this module does not track such statistics, and initializes statistics buffers running_mean and running_var as None",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       },
       "torch.nn.BatchNorm3d": {
         "affine": {
           "def": "a boolean value that when set to True, this module has learnable affine parameters",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "eps": {
           "def": "a value added to the denominator for numerical stability",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "momentum": {
           "def": "the value used for the running_mean and running_var computation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "num_features": {
           "def": "CCC from an expected input of size (N,C,D,H,W)(N, C, D, H, W)(N,C,D,H,W)",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "track_running_stats": {
           "def": "a boolean value that when set to True, this module tracks the running mean and variance, and when set to False, this module does not track such statistics, and initializes statistics buffers running_mean and running_var as None",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       }
     },
@@ -379,7 +415,8 @@
       "torch.ceil": {
         "input": {
           "def": "the input tensor",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -409,11 +446,13 @@
       "torch.nn.CELU": {
         "alpha": {
           "def": "the \u03b1\\alpha\u03b1 value for the CELU formulation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "inplace": {
           "def": "can optionally do the operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       }
     },
@@ -430,15 +469,18 @@
       "torch.cat": {
         "dim": {
           "def": "the dimension over which the tensors are concatenated.",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "out": {
           "def": "the output tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": false
         },
         "tensors": {
           "def": "any python sequence of tensors of the same type",
-          "type": "sequence of tensors"
+          "type": "tensors",
+          "isRequired": true
         }
       }
     },
@@ -457,10 +499,7 @@
         "values": {
           "def": "A list of Tensor objects or a single Tensor.",
           "isRequired": true,
-          "type": [
-            "tensors",
-            "tensor"
-          ]
+          "type": "tensors"
         }
       },
       "tf.keras.layers.Concatenate": {
@@ -503,115 +542,142 @@
       "torch.nn.Conv1d": {
         "bias": {
           "def": "If True, adds a learnable bias to the output",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "Spacing between kernel elements",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "groups": {
           "def": "Number of blocked connections from input channels to output channels",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "in_channels": {
           "def": "Number of channels in the input image",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "kernel_size": {
           "def": "Size of the convolving kernel",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "out_channels": {
           "def": "Number of channels produced by the convolution",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "padding": {
           "def": "Padding added to both sides of the input",
-          "type": "int tuple or str"
+          "type": "ints",
+          "isRequired": false
         },
         "padding_mode": {
           "def": "'zeros', 'reflect', 'replicate' or 'circular'",
-          "type": "string"
+          "type": "string",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the convolution",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       },
       "torch.nn.Conv2d": {
         "bias": {
           "def": "If True, adds a learnable bias to the output",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "Spacing between kernel elements",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "groups": {
           "def": "Number of blocked connections from input channels to output channels",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "in_channels": {
           "def": "Number of channels in the input image",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "kernel_size": {
           "def": "Size of the convolving kernel",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "out_channels": {
           "def": "Number of channels produced by the convolution",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "padding": {
           "def": "Padding added to all four sides of the input",
-          "type": "int tuple or str"
+          "type": "int tuple or str",
+          "isRequired": false
         },
         "padding_mode": {
           "def": "'zeros', 'reflect', 'replicate' or 'circular'",
-          "type": "string"
+          "type": "string",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the convolution",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       },
       "torch.nn.Conv3d": {
         "bias": {
           "def": "If True, adds a learnable bias to the output",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "Spacing between kernel elements",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "groups": {
           "def": "Number of blocked connections from input channels to output channels",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "in_channels": {
           "def": "Number of channels in the input image",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "kernel_size": {
           "def": "Size of the convolving kernel",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "out_channels": {
           "def": "Number of channels produced by the convolution",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "padding": {
           "def": "Padding added to all six sides of the input",
-          "type": "int tuple or str"
+          "type": "int tuple or str",
+          "isRequired": false
         },
         "padding_mode": {
           "def": "'zeros', 'reflect', 'replicate' or 'circular'",
-          "type": "string"
+          "type": "string",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the convolution",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       }
     },
@@ -650,10 +716,7 @@
         "dilation_rate": {
           "def": "an integer or tuple/list of a single integer, specifying the dilation rate to use for dilated convolution. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any strides value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "filters": {
           "def": "Integer, the dimensionality of the output space (i.e. the number of output filters in the convolution).",
@@ -683,10 +746,7 @@
         "kernel_size": {
           "def": "An integer or tuple/list of a single integer, specifying the length of the 1D convolution window.",
           "isRequired": true,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "padding": {
           "def": "One of \"valid\", \"same\" or \"causal\" (case-insensitive). \"valid\" means no padding. \"same\" results in padding with zeros evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input. \"causal\" results in causal (dilated) convolutions, e.g. output[t] does not depend on input[t+1:]. Useful when modeling temporal data where the model should not violate the temporal order. See WaveNet: A Generative Model for Raw Audio, section  2.1.",
@@ -696,10 +756,7 @@
         "strides": {
           "def": "An integer or tuple/list of a single integer, specifying the stride length of the convolution. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "use_bias": {
           "def": "Boolean, whether the layer uses a bias vector.",
@@ -741,10 +798,7 @@
         "dilation_rate": {
           "def": "an integer or tuple/list of 2 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "filters": {
           "def": "Integer, the dimensionality of the output space (i.e. the number of output filters in the convolution).",
@@ -774,10 +828,7 @@
         "kernel_size": {
           "def": "An integer or tuple/list of 2 integers, specifying the height and width of the 2D convolution window. Can be a single integer to specify the same value for all spatial dimensions.",
           "isRequired": true,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "padding": {
           "def": "one of \"valid\" or \"same\" (case-insensitive). \"valid\" means no padding. \"same\" results in padding with zeros evenly to the left/right or up/down of the input. When padding=\"same\" and strides=1, the output has the same size as the input.",
@@ -787,10 +838,7 @@
         "strides": {
           "def": "An integer or tuple/list of 2 integers, specifying the strides of the convolution along the height and width. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "use_bias": {
           "def": "Boolean, whether the layer uses a bias vector.",
@@ -832,10 +880,7 @@
         "dilation_rate": {
           "def": "an integer or tuple/list of 3 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "filters": {
           "def": "Integer, the dimensionality of the output space (i.e. the number of output filters in the convolution).",
@@ -865,10 +910,7 @@
         "kernel_size": {
           "def": "An integer or tuple/list of 3 integers, specifying the depth, height and width of the 3D convolution window. Can be a single integer to specify the same value for all spatial dimensions.",
           "isRequired": true,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "padding": {
           "def": "one of \"valid\" or \"same\" (case-insensitive). \"valid\" means no padding. \"same\" results in padding with zeros evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input.",
@@ -878,10 +920,7 @@
         "strides": {
           "def": "An integer or tuple/list of 3 integers, specifying the strides of the convolution along each spatial dimension. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "use_bias": {
           "def": "Boolean, whether the layer uses a bias vector.",
@@ -930,115 +969,142 @@
       "torch.nn.ConvTranspose1d": {
         "bias": {
           "def": "If True, adds a learnable bias to the output",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "Spacing between kernel elements",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "groups": {
           "def": "Number of blocked connections from input channels to output channels",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "in_channels": {
           "def": "Number of channels in the input image",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "kernel_size": {
           "def": "Size of the convolving kernel",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "out_channels": {
           "def": "Number of channels produced by the convolution",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "output_padding": {
           "def": "Additional size added to one side of the output shape",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "padding": {
           "def": "dilation * (kernel_size - 1) - padding zero-padding will be added to both sides of the input",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the convolution",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       },
       "torch.nn.ConvTranspose2d": {
         "bias": {
           "def": "If True, adds a learnable bias to the output",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "Spacing between kernel elements",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "groups": {
           "def": "Number of blocked connections from input channels to output channels",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "in_channels": {
           "def": "Number of channels in the input image",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "kernel_size": {
           "def": "Size of the convolving kernel",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "out_channels": {
           "def": "Number of channels produced by the convolution",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "output_padding": {
           "def": "Additional size added to one side of each dimension in the output shape",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "padding": {
           "def": "dilation * (kernel_size - 1) - padding zero-padding will be added to both sides of each dimension in the input",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the convolution",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       },
       "torch.nn.ConvTranspose3d": {
         "bias": {
           "def": "If True, adds a learnable bias to the output",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "Spacing between kernel elements",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "groups": {
           "def": "Number of blocked connections from input channels to output channels",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "in_channels": {
           "def": "Number of channels in the input image",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "kernel_size": {
           "def": "Size of the convolving kernel",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "out_channels": {
           "def": "Number of channels produced by the convolution",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "output_padding": {
           "def": "Additional size added to one side of each dimension in the output shape",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "padding": {
           "def": "dilation * (kernel_size - 1) - padding zero-padding will be added to both sides of each dimension in the input",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the convolution",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       }
     },
@@ -1184,18 +1250,12 @@
         "kernel_size": {
           "def": "An integer or tuple/list of 2 integers, specifying the height and width of the 2D convolution window. Can be a single integer to specify the same value for all spatial dimensions.",
           "isRequired": true,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "output_padding": {
           "def": "An integer or tuple/list of 2 integers, specifying the amount of padding along the height and width of the output tensor. Can be a single integer to specify the same value for all spatial dimensions. The amount of output padding along a given dimension must be lower than the stride along that same dimension. If set to None (default), the output shape is inferred.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "padding": {
           "def": "one of \"valid\" or \"same\" (case-insensitive). \"valid\" means no padding. \"same\" results in padding with zeros evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input.",
@@ -1205,10 +1265,7 @@
         "strides": {
           "def": "An integer or tuple/list of 2 integers, specifying the strides of the convolution along the height and width. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "use_bias": {
           "def": "Boolean, whether the layer uses a bias vector.",
@@ -1250,10 +1307,7 @@
         "dilation_rate": {
           "def": "an integer or tuple/list of 3 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "filters": {
           "def": "Integer, the dimensionality of the output space (i.e. the number of output filters in the convolution).",
@@ -1278,18 +1332,12 @@
         "kernel_size": {
           "def": "An integer or tuple/list of 3 integers, specifying the depth, height and width of the 3D convolution window. Can be a single integer to specify the same value for all spatial dimensions.",
           "isRequired": true,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "output_padding": {
           "def": "An integer or tuple/list of 3 integers, specifying the amount of padding along the depth, height, and width. Can be a single integer to specify the same value for all spatial dimensions. The amount of output padding along a given dimension must be lower than the stride along that same dimension. If set to None (default), the output shape is inferred.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "padding": {
           "def": "one of \"valid\" or \"same\" (case-insensitive). \"valid\" means no padding. \"same\" results in padding with zeros evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input.",
@@ -1299,10 +1347,7 @@
         "strides": {
           "def": "An integer or tuple/list of 3 integers, specifying the strides of the convolution along the depth, height  and width. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "use_bias": {
           "def": "Boolean, whether the layer uses a bias vector.",
@@ -1323,55 +1368,66 @@
       "torch.nn.Dropout": {
         "inplace": {
           "def": "If set to True, will do this operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "p": {
           "def": "probability of an element to be zeroed",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         }
       },
       "torch.nn.Dropout1d": {
         "inplace": {
           "def": "If set to True, will do this operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "p": {
           "def": "probability of an element to be zero-ed.",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         }
       },
       "torch.nn.Dropout2d": {
         "inplace": {
           "def": "If set to True, will do this operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "p": {
           "def": "probability of an element to be zero-ed.",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         }
       },
       "torch.nn.Dropout3d": {
         "inplace": {
           "def": "If set to True, will do this operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "p": {
           "def": "probability of an element to be zeroed.",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         }
       },
       "torch.nn.functional.dropout": {
         "inplace": {
           "def": "If set to True, will do this operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "p": {
           "def": "probability of an element to be zeroed",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "training": {
           "def": "apply dropout if is True",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       }
     },
@@ -1406,11 +1462,13 @@
       "torch.nn.ELU": {
         "alpha": {
           "def": "the \u03b1\\alpha\u03b1 value for the ELU formulation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "inplace": {
           "def": "can optionally do the operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       }
     },
@@ -1454,7 +1512,8 @@
       "torch.erf": {
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -1484,11 +1543,13 @@
       "torch.nn.Flatten": {
         "end_dim": {
           "def": "last dim to flatten (default = -1).",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "start_dim": {
           "def": "first dim to flatten (default = 1).",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         }
       }
     },
@@ -1513,7 +1574,8 @@
       "torch.floor": {
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -1543,7 +1605,8 @@
       "torch.nn.GELU": {
         "approximate": {
           "def": "the gelu approximation algorithm to use: 'none' | 'tanh'",
-          "type": "string"
+          "type": "string",
+          "isRequired": false
         }
       }
     },
@@ -1602,15 +1665,18 @@
       "torch.nn.Linear": {
         "bias": {
           "def": "If set to False, the layer will not learn an additive bias",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "in_features": {
           "def": " size of each input sample",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "out_features": {
           "def": "size of each output sample",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         }
       }
     },
@@ -1685,7 +1751,8 @@
       "torch.nn.Hardsigmoid": {
         "inplace": {
           "def": "can optionally do the operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       }
     },
@@ -1697,7 +1764,8 @@
       "torch.nn.Hardswish": {
         "inplace": {
           "def": "can optionally do the operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       }
     },
@@ -1714,67 +1782,82 @@
       "torch.nn.InstanceNorm1d": {
         "affine": {
           "def": "a boolean value that when set to True, this module has learnable affine parameters, initialized the same way as done for batch normalization",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "eps": {
           "def": "a value added to the denominator for numerical stability",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "momentum": {
           "def": "the value used for the running_mean and running_var computation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "num_features": {
           "def": "number of features or channels CCC of the input",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "track_running_stats": {
           "def": "a boolean value that when set to True, this module tracks the running mean and variance, and when set to False, this module does not track such statistics and always uses batch statistics in both training and eval modes",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       },
       "torch.nn.InstanceNorm2d": {
         "affine": {
           "def": "a boolean value that when set to True, this module has learnable affine parameters, initialized the same way as done for batch normalization",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "eps": {
           "def": "a value added to the denominator for numerical stability",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "momentum": {
           "def": "the value used for the running_mean and running_var computation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "num_features": {
           "def": "CCC from an expected input of size (N,C,H,W)(N, C, H, W)(N,C,H,W) or (C,H,W)(C, H, W)(C,H,W)",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "track_running_stats": {
           "def": "a boolean value that when set to True, this module tracks the running mean and variance, and when set to False, this module does not track such statistics and always uses batch statistics in both training and eval modes",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       },
       "torch.nn.InstanceNorm3d": {
         "affine": {
           "def": "a boolean value that when set to True, this module has learnable affine parameters, initialized the same way as done for batch normalization",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "eps": {
           "def": "a value added to the denominator for numerical stability",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "momentum": {
           "def": "the value used for the running_mean and running_var computation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "num_features": {
           "def": "CCC from an expected input of size (N,C,D,H,W)(N, C, D, H, W)(N,C,D,H,W) or (C,D,H,W)(C, D, H, W)(C,D,H,W)",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         },
         "track_running_stats": {
           "def": "a boolean value that when set to True, this module tracks the running mean and variance, and when set to False, this module does not track such statistics and always uses batch statistics in both training and eval modes",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       }
     },
@@ -1803,19 +1886,23 @@
       "torch.nn.LocalResponseNorm": {
         "alpha": {
           "def": "multiplicative factor",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "beta": {
           "def": "exponent",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "k": {
           "def": "additive factor",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "size": {
           "def": "amount of neighbouring channels used for normalization",
-          "type": "int"
+          "type": "int",
+          "isRequired": true
         }
       }
     },
@@ -1873,19 +1960,23 @@
       "torch.nn.LayerNorm": {
         "bias": {
           "def": "If set to False, the layer will not learn an additive bias (only relevant if elementwise_affine is True)",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "elementwise_affine": {
           "def": "a boolean value that when set to True, this module has learnable per-element affine parameters initialized to ones (for weights) and zeros (for biases)",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "eps": {
           "def": "a value added to the denominator for numerical stability",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "normalized_shape": {
           "def": "input shape from an expected input of size",
-          "type": "int or list or torchsize"
+          "type": "int or list or torchsize",
+          "isRequired": true
         }
       }
     },
@@ -1894,10 +1985,7 @@
         "axis": {
           "def": "Integer or List/Tuple. The axis or axes to normalize across. Typically, this is the features axis/axes. The left-out axes are typically the batch axis/axes. -1 is the last dimension in the input. Defaults to -1.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "beta_constraint": {
           "def": "Optional constraint for the beta weight. None by default.",
@@ -1958,11 +2046,13 @@
       "torch.nn.LeakyReLU": {
         "inplace": {
           "def": "can optionally do the operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "negative_slope": {
           "def": "Controls the angle of the negative slope (which is used for negative input values)",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         }
       }
     },
@@ -1987,7 +2077,8 @@
       "torch.nn.LogSoftmax": {
         "dim": {
           "def": " dimension along which LogSoftmax will be computed.",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         }
       }
     },
@@ -2028,29 +2119,45 @@
       "torch.nn.LPPool1d": {
         "ceil_mode": {
           "def": "when True, will use ceil instead of floor to compute the output shape",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "kernel_size": {
           "def": "a single int, the size of the window",
-          "type": "unionint tupleint"
+          "type": "int",
+          "isRequired": true
         },
         "stride": {
           "def": "a single int, the stride of the window",
-          "type": "unionint tupleint"
+          "type": "int",
+          "isRequired": false
+        },
+        "norm_type": {
+          "def": "",
+          "type": "int",
+          "isRequired": true
         }
       },
       "torch.nn.LPPool2d": {
         "ceil_mode": {
           "def": "when True, will use ceil instead of floor to compute the output shape",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "kernel_size": {
           "def": "the size of the window",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": true
         },
         "stride": {
           "def": "the stride of the window",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": false
+        },
+        "norm_type": {
+          "def": "",
+          "type": "int",
+          "isRequired": true
         }
       }
     },
@@ -2067,10 +2174,12 @@
       "torch.maximum": {
         "other": {
           "def": "the second input tensor",
+          "isRequired": true,
           "type": "tensor"
         },
         "input": {
           "def": "the input tensor.",
+          "isRequired": true,
           "type": "tensor"
         }
       }
@@ -2142,79 +2251,97 @@
       "torch.nn.MaxPool1d": {
         "ceil_mode": {
           "def": "If True, will use ceil instead of floor to compute the output shape",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "The stride between elements within a sliding window, must be > 0.",
-          "type": "unionint tupleint"
+          "type": "ints",
+          "isRequired": false
         },
         "kernel_size": {
           "def": "The size of the sliding window, must be > 0.",
-          "type": "unionint tupleint"
+          "type": "ints",
+          "isRequired": true
         },
         "padding": {
           "def": "Implicit negative infinity padding to be added on both sides, must be >= 0 and <= kernel_size / 2.",
-          "type": "unionint tupleint"
+          "type": "ints",
+          "isRequired": false
         },
         "return_indices": {
           "def": "If True, will return the argmax along with the max values",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "stride": {
           "def": "The stride of the sliding window, must be > 0",
-          "type": "unionint tupleint"
+          "type": "ints",
+          "isRequired": false
         }
       },
       "torch.nn.MaxPool2d": {
         "ceil_mode": {
           "def": "when True, will use ceil instead of floor to compute the output shape",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "a parameter that controls the stride of elements in the window",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": false
         },
         "kernel_size": {
           "def": "the size of the window to take a max over",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": true
         },
         "padding": {
           "def": "Implicit negative infinity padding to be added on both sides",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": false
         },
         "return_indices": {
           "def": "if True, will return the max indices along with the outputs",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "stride": {
           "def": "the stride of the window",
-          "type": "unionint tupleint int"
+          "type": "unionint tupleint int",
+          "isRequired": false
         }
       },
       "torch.nn.MaxPool3d": {
         "ceil_mode": {
           "def": "when True, will use ceil instead of floor to compute the output shape",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "dilation": {
           "def": "a parameter that controls the stride of elements in the window",
-          "type": "unionint tupleint int int"
+          "type": "unionint tupleint int int",
+          "isRequired": false
         },
         "kernel_size": {
           "def": "the size of the window to take a max over",
-          "type": "unionint tupleint int int"
+          "type": "unionint tupleint int int",
+          "isRequired": true
         },
         "padding": {
           "def": "Implicit negative infinity padding to be added on all three sides",
-          "type": "unionint tupleint int int"
+          "type": "unionint tupleint int int",
+          "isRequired": false
         },
         "return_indices": {
           "def": "if True, will return the max indices along with the outputs",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "stride": {
           "def": "the stride of the window",
-          "type": "unionint tupleint int int"
+          "type": "unionint tupleint int int",
+          "isRequired": false
         }
       }
     },
@@ -2255,18 +2382,12 @@
         "pool_size": {
           "def": "integer or tuple of 2 integers, window size over which to take the maximum. (2, 2) will take the max value over a 2x2 pooling window. If only one integer is specified, the same window length will be used for both dimensions.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "strides": {
           "def": "Integer, tuple of 2 integers, or None. Strides values. Specifies how far the pooling window moves for each pooling step. If None, it will default to pool_size.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         }
       },
       "tf.keras.layers.MaxPooling3D": {
@@ -2283,18 +2404,12 @@
         "pool_size": {
           "def": "Tuple of 3 integers, factors by which to downscale (dim1, dim2, dim3). (2, 2, 2) will halve the size of the 3D input in each dimension.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         },
         "strides": {
           "def": "tuple of 3 integers, or None. Strides values.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         }
       }
     }
@@ -2318,43 +2433,52 @@
       "torch.nn.MaxUnpool1d": {
         "kernel_size": {
           "def": "Size of the max pooling window.",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "padding": {
           "def": "Padding that was added to the input",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the max pooling window",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       },
       "torch.nn.MaxUnpool2d": {
         "kernel_size": {
           "def": "Size of the max pooling window.",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "padding": {
           "def": "Padding that was added to the input",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the max pooling window",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       },
       "torch.nn.MaxUnpool3d": {
         "kernel_size": {
           "def": "Size of the max pooling window.",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": true
         },
         "padding": {
           "def": "Padding that was added to the input",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         },
         "stride": {
           "def": "Stride of the max pooling window",
-          "type": "int or tuple"
+          "type": "ints",
+          "isRequired": false
         }
       }
     },
@@ -2368,14 +2492,16 @@
       }
     },
     "pytorch": {
-      "torch.amin": {
+      "torch.minimum": {
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         },
         "other": {
-          "def": "the second input tensor",
-          "type": "tensor"
+          "def": "the second input.",
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -2425,15 +2551,18 @@
       "torch.fmod": {
         "input": {
           "def": "the dividend",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         },
         "other": {
           "def": "the divisor",
-          "type": "tensor or scalar"
+          "type": "tensor",
+          "isRequired": true
         },
         "out": {
           "def": "the output tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": false
         }
       }
     },
@@ -2468,7 +2597,20 @@
         "type": "int"
       }
     },
-    "pytorch": {},
+    "pytorch": {
+      "torch.mul": {
+        "input": {
+          "def": "the input tensor.",
+          "isRequired": true,
+          "type": "tensor"
+        },
+        "other": {
+          "def": "",
+          "isRequired": true,
+          "type": "tensor"
+        }
+      }
+    },
     "tensorflow": {
       "tf.math.multiply": {
         "name": {
@@ -2510,11 +2652,13 @@
       "torch.nn.PReLU": {
         "init": {
           "def": "the initial value of aaa",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         },
         "num_parameters": {
           "def": "number of aaa to learn",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         }
       }
     },
@@ -2558,19 +2702,23 @@
       "torch.pow": {
         "exponent": {
           "def": "the exponent tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         },
         "out": {
           "def": "the output tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": false
         },
         "self": {
           "def": "the scalar base value for the power operation",
-          "type": "float"
+          "type": "float",
+          "isRequired": false
         }
       }
     },
@@ -2605,7 +2753,8 @@
       "torch.reciprocal": {
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -2637,21 +2786,10 @@
     },
     "pytorch": {
       "torch.max": {
-        "dim": {
-          "def": "the dimension to reduce.",
-          "type": "int"
-        },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
-        },
-        "keepdim": {
-          "def": "whether the output tensor has dim retained or not",
-          "type": "bool"
-        },
-        "out": {
-          "def": "the result tuple of two output tensors (max, max_indices)",
-          "type": "tuple"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -2693,25 +2831,15 @@
     },
     "pytorch": {
       "torch.mean": {
-        "dim": {
-          "def": "the dimension or dimensions to reduce.",
-          "type": "int or tuple of ints"
-        },
         "dtype": {
           "def": "the desired data type of returned tensor",
-          "type": "torchdtype"
+          "type": "torchdtype",
+          "isRequired": false
         },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
-        },
-        "keepdim": {
-          "def": "whether the output tensor has dim retained or not.",
-          "type": "bool"
-        },
-        "out": {
-          "def": "the output tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -2753,21 +2881,10 @@
     },
     "pytorch": {
       "torch.min": {
-        "dim": {
-          "def": "the dimension to reduce.",
-          "type": "int"
-        },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
-        },
-        "keepdim": {
-          "def": "whether the output tensor has dim retained or not.",
-          "type": "bool"
-        },
-        "out": {
-          "def": "the tuple of two output tensors (min, min_indices)",
-          "type": "tuple"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -2809,21 +2926,15 @@
     },
     "pytorch": {
       "torch.prod": {
-        "dim": {
-          "def": "the dimension to reduce.",
-          "type": "int"
-        },
         "dtype": {
           "def": "the desired data type of returned tensor",
-          "type": "torchdtype"
+          "type": "torchdtype",
+          "isRequired": false
         },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
-        },
-        "keepdim": {
-          "def": "whether the output tensor has dim retained or not.",
-          "type": "bool"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -2865,21 +2976,15 @@
     },
     "pytorch": {
       "torch.sum": {
-        "dim": {
-          "def": "the dimension or dimensions to reduce",
-          "type": "int or tuple of ints"
-        },
         "dtype": {
           "def": "the desired data type of returned tensor",
-          "type": "torchdtype"
+          "type": "torchdtype",
+          "isRequired": false
         },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
-        },
-        "keepdim": {
-          "def": "whether the output tensor has dim retained or not.",
-          "type": "bool"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -2917,19 +3022,22 @@
     },
     "pytorch": {
       "torch.nn.ReLU": {
-        "input": {
-          "def": "the input tensor.",
-          "type": "tensor"
+        "inplace": {
+          "def": "can optionally do the operation in-place",
+          "type": "bool",
+          "isRequired": false
         }
       },
       "torch.nn.functional.relu": {
         "inplace": {
           "def": "can optionally do the operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         }
       }
     },
@@ -2998,11 +3106,13 @@
       "torch.reshape": {
         "input": {
           "def": "the tensor to be reshaped",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         },
         "shape": {
           "def": "the new shape",
-          "type": "ints"
+          "type": "ints",
+          "isRequired": true
         }
       }
     },
@@ -3022,15 +3132,18 @@
       "torch.round": {
         "decimals": {
           "def": "Number of decimal places to round to (default: 0)",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "input": {
           "def": "the input tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": true
         },
         "out": {
           "def": "the output tensor.",
-          "type": "tensor"
+          "type": "tensor",
+          "isRequired": false
         }
       }
     },
@@ -3064,7 +3177,8 @@
       "torch.nn.SELU": {
         "inplace": {
           "def": "can optionally do the operation in-place",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         }
       }
     },
@@ -3133,7 +3247,8 @@
       "torch.nn.Softmax": {
         "dim": {
           "def": "A dimension along which Softmax will be computed (so every slice along dim will sum to 1).",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         }
       },
       "torch.nn.Softmax2d": {}
@@ -3155,10 +3270,7 @@
         "axis": {
           "def": "Integer, or list of Integers, axis along which the softmax normalization is applied.",
           "isRequired": false,
-          "type": [
-            "int",
-            "ints"
-          ]
+          "type": "int"
         }
       },
       "tf.nn.softmax": {
@@ -3186,11 +3298,13 @@
       "torch.nn.Softplus": {
         "beta": {
           "def": "the \u03b2\\beta\u03b2 value for the Softplus formulation",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         },
         "threshold": {
           "def": "values above this revert to a linear function",
-          "type": "int"
+          "type": "int",
+          "isRequired": false
         }
       }
     },
@@ -3254,7 +3368,20 @@
         "type": "int"
       }
     },
-    "pytorch": {},
+    "pytorch": {
+      "torch.sub": {
+        "input": {
+          "def": "the input tensor.",
+          "isRequired": true,
+          "type": "tensor"
+        },
+        "other": {
+          "def": "the tensor or number to subtract from input.",
+          "isRequired": true,
+          "type": "tensor"
+        }
+      }
+    },
     "tensorflow": {
       "tf.math.subtract": {
         "name": {
@@ -3336,23 +3463,28 @@
       "torch.nn.Upsample": {
         "align_corners": {
           "def": "if True, the corner pixels of the input and output tensors are aligned, and thus preserving the values at those pixels",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "mode": {
           "def": "the upsampling algorithm: one of 'nearest', 'linear', 'bilinear', 'bicubic' and 'trilinear'",
-          "type": "string"
+          "type": "string",
+          "isRequired": false
         },
         "recompute_scale_factor": {
           "def": "recompute the scale_factor for use in the interpolation calculation",
-          "type": "bool"
+          "type": "bool",
+          "isRequired": false
         },
         "scale_factor": {
           "def": "multiplier for spatial size",
-          "type": "float or tuplefloat or tuplefloat float or tuplefloat float float"
+          "type": "float or tuplefloat or tuplefloat float or tuplefloat float float",
+          "isRequired": false
         },
         "size": {
           "def": "output spatial sizes",
-          "type": "int or tupleint or tupleint int or tupleint int int"
+          "type": "int or tupleint or tupleint int or tupleint int int",
+          "isRequired": false
         }
       }
     },
