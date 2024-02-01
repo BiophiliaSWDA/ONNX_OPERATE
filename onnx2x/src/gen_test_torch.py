@@ -122,7 +122,7 @@ def gen_code():
         torch_test_code.write('\n')
 
 
-gen_code()
+# gen_code()
 
 
 def gen_test_(api, pattern, requireds, tensor, i) -> str:
@@ -135,13 +135,10 @@ def gen_test_(api, pattern, requireds, tensor, i) -> str:
     elif pattern == tensor_pattern[1]:
         # 'api(tensor+, *args)
         code = f'{api_name} = {api}({tensor}, {tensor}, {parameters})\n'
-    elif pattern == tensor_pattern[2]:
+    elif pattern == tensor_pattern[3]:
         # 'api(*args)(tensor)'
         code = f'{api_name} = {api}({parameters})({tensor})\n'
-    elif pattern == tensor_pattern[3]:
-        # 'api(*args)([tensor+])'
-        code = f'{api_name} = {api}({parameters})([{tensor}, {tensor}])\n'
-    elif pattern == tensor_pattern[4]:
+    elif pattern == tensor_pattern[2]:
         # 'api([tensor+], *args)'
         code = f'{api_name} = {api}([{tensor}, {tensor}], {parameters})\n'
     else:
@@ -162,10 +159,10 @@ def update_full_table_mapping_():
         # continue
 
         for api in apis:
-            num_pattern = re.compile(r'\dD', re.S)
+            num_pattern = re.compile(r'\dd', re.S)
             dim = num_pattern.findall(api)
             if dim:
-                dim = dim[0].replace('D', '')
+                dim = dim[0].replace('d', '')
                 tensor = tensors[int(dim)]
             else:
                 tensor = tensors[2]
@@ -176,7 +173,7 @@ def update_full_table_mapping_():
 
             code = gen_test_(api, pattern, requireds, tensor, i)
 
-            api_test_code_path = f'{TEST_CODE_PATH}/tf/{api}.py'
+            api_test_code_path = f'{TEST_CODE_PATH}/torch/{api}.py'
             with open(api_test_code_path, 'w') as f:
                 f.write(head)
                 f.write('\n')
@@ -185,12 +182,12 @@ def update_full_table_mapping_():
             print('写入至文件', api_test_code_path)
 
             try:
-                subprocess.run(['python', api_test_code_path])
-                full_table_mapping = True
+                run_result = subprocess.run(['python', api_test_code_path])
+                full_table_mapping = True if run_result.returncode == 0 else None
+
+                # 强制更新full_table_mapping
+                d.update_full_table_mapping(onnx, full_table_mapping, force=True)
             except:
-                full_table_mapping = None
+                pass
 
-            d.update_full_table_mapping(onnx, full_table_mapping)
-
-
-# update_full_table_mapping_()
+update_full_table_mapping_()

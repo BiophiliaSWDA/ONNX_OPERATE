@@ -151,12 +151,13 @@ def update_full_table_mapping_():
             print('写入至文件', api_test_code_path)
 
             try:
-                subprocess.run(['python', api_test_code_path])
-                full_table_mapping = True
-            except:
-                full_table_mapping = None
+                run_result = subprocess.run(['python', api_test_code_path])
+                full_table_mapping = True if run_result.returncode == 0 else None
 
-            d.update_full_table_mapping(onnx, full_table_mapping)
+                # 强制更新full_table_mapping
+                d.update_full_table_mapping(onnx, full_table_mapping, force=True)
+            except:
+                pass
 
 
 # update_full_table_mapping_()

@@ -173,20 +173,21 @@ class Database:
             _full_table_mapping = None if list(_onnx[1][self.__framework]) == [] else True
             self.update_full_table_mapping(_op_type, full_table_mapping=_full_table_mapping)
 
-    def update_full_table_mapping(self, onnx, full_table_mapping):
+    def update_full_table_mapping(self, onnx, full_table_mapping, force=False):
         _org_full_table_mapping = self.__onnx2x_api_mappings[onnx][self.__framework]['full_table_mapping']
         _new_full_table_mapping = full_table_mapping
         _flag = False
-        if _org_full_table_mapping is None:
-            _flag = True
-        elif _org_full_table_mapping:
-            if not _new_full_table_mapping:
+        if not force:
+            if _org_full_table_mapping is None:
                 _flag = True
-        elif not _org_full_table_mapping:
-            pass
+            elif _org_full_table_mapping:
+                if not _new_full_table_mapping:
+                    _flag = True
+            elif not _org_full_table_mapping:
+                pass
 
-        if _flag:
-            self.__onnx2x_api_mappings[onnx][self.__framework]['full_table_mapping'] = _new_full_table_mapping
+        if _flag or force:
+                self.__onnx2x_api_mappings[onnx][self.__framework]['full_table_mapping'] = _new_full_table_mapping
 
         with open(p.OPS_MAPPINGS_PATH, 'w') as onnx2x_api_mappings_file:
             json.dump(self.__onnx2x_api_mappings, onnx2x_api_mappings_file, sort_keys=True)
@@ -199,7 +200,7 @@ d = Database()
 # d.check()
 # d.set_framework('tensorflow') # default: pytorch
 
-d.update(True)
+# d.update(True)
 # print(d.get_onnx2x_apis('Add'))
 # print(d.get_onnx2x_patterns('Add'))
 # print(d.get_onnx2x_para_requireds('AveragePool', 'tf.keras.layers.AveragePooling1D'))

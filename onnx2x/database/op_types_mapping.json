@@ -14,7 +14,7 @@
       "apis": [
         "torch.add"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor+, *args)"
       ]
@@ -54,7 +54,7 @@
         "torch.nn.AvgPool2d",
         "torch.nn.AvgPool3d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -101,7 +101,7 @@
         "torch.nn.BatchNorm2d",
         "torch.nn.BatchNorm3d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -133,7 +133,7 @@
       "apis": [
         "torch.ceil"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -167,7 +167,7 @@
       "apis": [
         "torch.nn.CELU"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -193,7 +193,7 @@
       "apis": [
         "torch.cat"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api([tensor+], *args)"
       ]
@@ -235,7 +235,7 @@
         "torch.nn.Conv1d",
         "torch.nn.Conv2d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -281,7 +281,7 @@
         "torch.nn.ConvTranspose2d",
         "torch.nn.ConvTranspose3d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -330,7 +330,7 @@
         "torch.nn.Dropout1d",
         "torch.nn.Dropout3d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)",
         "api(*args)(tensor)",
@@ -368,7 +368,7 @@
       "apis": [
         "torch.nn.ELU"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -402,7 +402,7 @@
       "apis": [
         "torch.erf"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -436,7 +436,7 @@
       "apis": [
         "torch.nn.Flatten"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -466,7 +466,7 @@
       "apis": [
         "torch.floor"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -534,7 +534,7 @@
       "apis": [
         "torch.nn.GELU"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -566,7 +566,7 @@
       "apis": [
         "torch.nn.Linear"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -654,7 +654,7 @@
       "apis": [
         "torch.nn.Hardsigmoid"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -682,7 +682,7 @@
       "apis": [
         "torch.nn.Hardswish"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -710,7 +710,7 @@
         "torch.nn.InstanceNorm1d",
         "torch.nn.InstanceNorm3d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -740,7 +740,7 @@
       "apis": [
         "torch.nn.LocalResponseNorm"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -768,7 +768,7 @@
     },
     "pytorch": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     },
     "tensorflow": {
@@ -792,7 +792,7 @@
       "apis": [
         "torch.nn.LayerNorm"
       ],
-      "full_table_mapping": false,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -826,7 +826,7 @@
       "apis": [
         "torch.nn.LeakyReLU"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -860,7 +860,7 @@
       "apis": [
         "torch.nn.LogSoftmax"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -890,7 +890,7 @@
         "torch.nn.LPPool1d",
         "torch.nn.LPPool2d"
       ],
-      "full_table_mapping": false,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)"
@@ -917,7 +917,7 @@
       "apis": [
         "torch.maximum"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor+, *args)"
       ]
@@ -959,7 +959,7 @@
         "torch.nn.MaxPool1d",
         "torch.nn.MaxPool3d"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -1033,7 +1033,7 @@
       "apis": [
         "torch.minimum"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor+, *args)"
       ]
@@ -1067,7 +1067,7 @@
       "apis": [
         "torch.nn.Mish"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -1097,7 +1097,7 @@
       "apis": [
         "torch.fmod"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor+, *args)"
       ]
@@ -1127,7 +1127,7 @@
       "apis": [
         "torch.mul"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor+, *args)"
       ]
@@ -1183,7 +1183,7 @@
       "apis": [
         "torch.nn.PReLU"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -1213,7 +1213,7 @@
       "apis": [
         "torch.pow"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor+, *args)"
       ]
@@ -1241,7 +1241,7 @@
     },
     "pytorch": {
       "apis": [],
-      "full_table_mapping": true,
+      "full_table_mapping": null,
       "patterns": []
     },
     "tensorflow": {
@@ -1265,7 +1265,7 @@
       "apis": [
         "torch.reciprocal"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -1295,7 +1295,7 @@
       "apis": [
         "torch.max"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -1325,7 +1325,7 @@
       "apis": [
         "torch.mean"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -1355,7 +1355,7 @@
       "apis": [
         "torch.min"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -1385,7 +1385,7 @@
       "apis": [
         "torch.prod"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -1415,7 +1415,7 @@
       "apis": [
         "torch.sum"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -1450,7 +1450,7 @@
         "torch.nn.functional.relu",
         "torch.nn.ReLU"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)",
         "api(*args)(tensor)"
@@ -1485,7 +1485,7 @@
       "apis": [
         "torch.reshape"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -1515,7 +1515,7 @@
       "apis": [
         "torch.round"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)"
       ]
@@ -1549,7 +1549,7 @@
       "apis": [
         "torch.nn.SELU"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -1585,7 +1585,7 @@
       "apis": [
         "torch.nn.Sigmoid"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -1624,7 +1624,7 @@
         "torch.nn.Softmax2d",
         "torch.nn.Softmax"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)"
@@ -1661,7 +1661,7 @@
       "apis": [
         "torch.nn.Softplus"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -1697,7 +1697,7 @@
       "apis": [
         "torch.nn.Softsign"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
@@ -1729,7 +1729,7 @@
       "apis": [
         "torch.sub"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(tensor+, *args)"
       ]
@@ -1763,7 +1763,7 @@
       "apis": [
         "torch.nn.Tanh"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
         "api(*args)(tensor)"
       ]
