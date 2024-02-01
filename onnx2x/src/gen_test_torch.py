@@ -17,6 +17,7 @@ from onnx2x.config.config_path import TEST_CODE_PATH
 
 
 d = Database()
+d.set_framework('pytorch')
 op_list = d.get_onnx_list()
 
 tensor_pattern = [
@@ -190,4 +191,4 @@ def update_full_table_mapping_():
             except:
                 pass
 
-update_full_table_mapping_()
+# update_full_table_mapping_()

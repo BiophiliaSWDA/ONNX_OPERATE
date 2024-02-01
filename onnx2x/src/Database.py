@@ -196,7 +196,6 @@ class Database:
 
 
 d = Database()
-
 # d.check()
 # d.set_framework('tensorflow') # default: pytorch
 

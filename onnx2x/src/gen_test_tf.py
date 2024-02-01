@@ -6,6 +6,7 @@
 @Author  : Biophilia Wu
 @Email   : BiophiliaSWDA@163.com
 """
+import os
 import re
 import subprocess
 import time
@@ -15,6 +16,7 @@ from onnx2x.src.Database import Database
 from onnx2x.config.config_path import TEST_CODE_PATH
 
 d = Database()
+d.set_framework('tensorflow')
 op_list = d.get_onnx_list()
 
 tensor_pattern = [
@@ -89,6 +91,42 @@ def gen_test(api, pattern, requireds, tensor, i) -> str:
         code = ''
 
     return code
+
+
+def gen_code():
+    body = ''
+    skip = ['GRU', 'LSTM', 'RNN']
+    for onnx in op_list:
+        if onnx in skip:
+            continue
+        apis = d.get_onnx2x_apis(onnx)
+        patterns = d.get_onnx2x_patterns(onnx)
+
+        for api in apis:
+            num_pattern = re.compile(r'\dD', re.S)
+            dim = num_pattern.findall(api)
+            if dim:
+                dim = dim[0].replace('D', '')
+                tensor = tensors[int(dim)]
+            else:
+                tensor = tensors[2]
+            i = apis.index(api)
+            pattern = patterns[i]
+
+            requireds = d.get_onnx2x_para_requireds(onnx, api)
+
+            code = gen_test(api, pattern, requireds, tensor, i)
+
+            body += code
+
+    with open(os.path.join(TEST_CODE_PATH, 'tf_test_code.py'), 'w') as tf_test_code:
+        tf_test_code.write(head)
+        tf_test_code.write('\n')
+        tf_test_code.write(body)
+        tf_test_code.write('\n')
+
+
+# gen_code()
 
 
 def gen_test_(api, pattern, requireds, tensor, i) -> str:
