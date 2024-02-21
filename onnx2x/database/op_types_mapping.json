@@ -1,14 +1,22 @@
 {
   "Add": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.add"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.add"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -32,21 +40,29 @@
   "AveragePool": {
     "mindspore": {
       "apis": [
-        "mindspore.nn.AvgPool3d",
+        "mindspore.nn.AvgPool1d",
         "mindspore.nn.AvgPool2d",
-        "mindspore.nn.AvgPool1d"
+        "mindspore.nn.AvgPool3d"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
+        "paddle.nn.AvgPool1D",
         "paddle.nn.AvgPool2D",
-        "paddle.nn.AvgPool3D",
-        "paddle.nn.AvgPool1D"
+        "paddle.nn.AvgPool3D"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -78,22 +94,29 @@
   "BatchNormalization": {
     "mindspore": {
       "apis": [
-        "mindspore.nn.BatchNorm3d",
         "mindspore.nn.BatchNorm1d",
-        "mindspore.nn.BatchNorm2d"
+        "mindspore.nn.BatchNorm2d",
+        "mindspore.nn.BatchNorm3d"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.BatchNorm1D",
-        "paddle.nn.BatchNorm3D",
-        "paddle.nn.BatchNorm",
-        "paddle.nn.BatchNorm2D"
+        "paddle.nn.BatchNorm2D",
+        "paddle.nn.BatchNorm3D"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -120,14 +143,22 @@
   },
   "Ceil": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.ceil"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.ceil"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -153,15 +184,19 @@
       "apis": [
         "mindspore.nn.CELU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.CELU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -180,14 +215,22 @@
   },
   "Concat": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.cat"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api((tensor+), *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.concat"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api((tensor+), *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -195,7 +238,7 @@
       ],
       "full_table_mapping": true,
       "patterns": [
-        "api([tensor+], *args)"
+        "api((tensor+), *args)"
       ]
     },
     "tensorflow": {
@@ -213,12 +256,16 @@
   "Conv": {
     "mindspore": {
       "apis": [
-        "mindspore.nn.Conv3d",
         "mindspore.nn.Conv1d",
-        "mindspore.nn.Conv2d"
+        "mindspore.nn.Conv2d",
+        "mindspore.nn.Conv3d"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": false,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
@@ -226,16 +273,20 @@
         "paddle.nn.Conv2D",
         "paddle.nn.Conv3D"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": false,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
-        "torch.nn.Conv3d",
         "torch.nn.Conv1d",
-        "torch.nn.Conv2d"
+        "torch.nn.Conv2d",
+        "torch.nn.Conv3d"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -244,9 +295,9 @@
     },
     "tensorflow": {
       "apis": [
+        "tf.keras.layers.Conv1D",
         "tf.keras.layers.Conv2D",
-        "tf.keras.layers.Conv3D",
-        "tf.keras.layers.Conv1D"
+        "tf.keras.layers.Conv3D"
       ],
       "full_table_mapping": false,
       "patterns": [
@@ -259,21 +310,29 @@
   "ConvTranspose": {
     "mindspore": {
       "apis": [
-        "mindspore.nn.Conv3dTranspose",
         "mindspore.nn.Conv1dTranspose",
-        "mindspore.nn.Conv2dTranspose"
+        "mindspore.nn.Conv2dTranspose",
+        "mindspore.nn.Conv3dTranspose"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": false,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
-        "paddle.nn.Conv3DTranspose",
         "paddle.nn.Conv1DTranspose",
-        "paddle.nn.Conv2DTranspose"
+        "paddle.nn.Conv2DTranspose",
+        "paddle.nn.Conv3DTranspose"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": false,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -281,7 +340,7 @@
         "torch.nn.ConvTranspose2d",
         "torch.nn.ConvTranspose3d"
       ],
-      "full_table_mapping": true,
+      "full_table_mapping": false,
       "patterns": [
         "api(*args)(tensor)",
         "api(*args)(tensor)",
@@ -291,8 +350,8 @@
     "tensorflow": {
       "apis": [
         "tf.keras.layers.Conv1DTranspose",
-        "tf.keras.layers.Conv3DTranspose",
-        "tf.keras.layers.Conv2DTranspose"
+        "tf.keras.layers.Conv2DTranspose",
+        "tf.keras.layers.Conv3DTranspose"
       ],
       "full_table_mapping": false,
       "patterns": [
@@ -305,35 +364,42 @@
   "Dropout": {
     "mindspore": {
       "apis": [
-        "mindspore.nn.Dropout",
+        "mindspore.ops.dropout",
         "mindspore.nn.Dropout1d",
         "mindspore.nn.Dropout2d",
         "mindspore.nn.Dropout3d"
-      ],
-      "full_table_mapping": null,
-      "patterns": []
-    },
-    "paddlepaddle": {
-      "apis": [
-        "paddle.nn.Dropout",
-        "paddle.nn.Dropout3D",
-        "paddle.nn.Dropout2D"
-      ],
-      "full_table_mapping": null,
-      "patterns": []
-    },
-    "pytorch": {
-      "apis": [
-        "torch.nn.functional.dropout",
-        "torch.nn.Dropout",
-        "torch.nn.Dropout2d",
-        "torch.nn.Dropout1d",
-        "torch.nn.Dropout3d"
       ],
       "full_table_mapping": true,
       "patterns": [
         "api(tensor, *args)",
         "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
+    },
+    "paddlepaddle": {
+      "apis": [
+        "paddle.nn.Dropout",
+        "paddle.nn.Dropout2D",
+        "paddle.nn.Dropout3D"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
+    },
+    "pytorch": {
+      "apis": [
+        "torch.nn.functional.dropout",
+        "torch.nn.Dropout1d",
+        "torch.nn.Dropout2d",
+        "torch.nn.Dropout3d"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)",
         "api(*args)(tensor)",
         "api(*args)(tensor)",
         "api(*args)(tensor)"
@@ -389,14 +455,22 @@
   },
   "Erf": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.erf"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.erf"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -422,15 +496,19 @@
       "apis": [
         "mindspore.nn.Flatten"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Flatten"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -453,14 +531,22 @@
   },
   "Floor": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.floor"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.floor"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -483,36 +569,24 @@
   },
   "GRU": {
     "mindspore": {
-      "apis": [
-        "mindspore.nn.GRU"
-      ],
+      "apis": [],
       "full_table_mapping": null,
       "patterns": []
     },
     "paddlepaddle": {
-      "apis": [
-        "paddle.nn.GRU"
-      ],
+      "apis": [],
       "full_table_mapping": null,
       "patterns": []
     },
     "pytorch": {
-      "apis": [
-        "torch.nn.GRU"
-      ],
+      "apis": [],
       "full_table_mapping": null,
-      "patterns": [
-        "api(*args)(tensor)"
-      ]
+      "patterns": []
     },
     "tensorflow": {
-      "apis": [
-        "tf.keras.layers.GRU"
-      ],
+      "apis": [],
       "full_table_mapping": null,
-      "patterns": [
-        "api(*args)(tensor)"
-      ]
+      "patterns": []
     }
   },
   "Gelu": {
@@ -520,15 +594,19 @@
       "apis": [
         "mindspore.nn.GELU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.GELU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -639,16 +717,22 @@
   },
   "HardSigmoid": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.nn.HSigmoid"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Hardsigmoid"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -667,16 +751,22 @@
   },
   "HardSwish": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.nn.HSwish"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Hardswish"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -695,9 +785,17 @@
   },
   "InstanceNormalization": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.nn.InstanceNorm1d",
+        "mindspore.nn.InstanceNorm2d",
+        "mindspore.nn.InstanceNorm3d"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [],
@@ -706,8 +804,8 @@
     },
     "pytorch": {
       "apis": [
-        "torch.nn.InstanceNorm2d",
         "torch.nn.InstanceNorm1d",
+        "torch.nn.InstanceNorm2d",
         "torch.nn.InstanceNorm3d"
       ],
       "full_table_mapping": true,
@@ -728,13 +826,19 @@
       "apis": [
         "mindspore.nn.LRN"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.nn.LocalResponseNorm"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -749,9 +853,9 @@
       "apis": [
         "tf.raw_ops.LRN"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": true,
       "patterns": [
-        "api(tensor, *args)"
+        "api(*args)(tensor)"
       ]
     }
   },
@@ -779,14 +883,22 @@
   },
   "LayerNormalization": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.nn.LayerNorm"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.nn.LayerNorm"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -812,15 +924,19 @@
       "apis": [
         "mindspore.nn.LeakyReLU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.LeakyReLU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -846,15 +962,19 @@
       "apis": [
         "mindspore.nn.LogSoftmax"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.LogSoftmax"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -877,8 +997,11 @@
         "mindspore.nn.LPPool1d",
         "mindspore.nn.LPPool2d"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [],
@@ -904,14 +1027,22 @@
   },
   "Max": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.maximum"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.maximum"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -938,11 +1069,15 @@
     "mindspore": {
       "apis": [
         "mindspore.nn.MaxPool1d",
-        "mindspore.nn.MaxPool3d",
-        "mindspore.nn.MaxPool2d"
+        "mindspore.nn.MaxPool2d",
+        "mindspore.nn.MaxPool3d"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
@@ -950,13 +1085,17 @@
         "paddle.nn.MaxPool2D",
         "paddle.nn.MaxPool3D"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
-        "torch.nn.MaxPool2d",
         "torch.nn.MaxPool1d",
+        "torch.nn.MaxPool2d",
         "torch.nn.MaxPool3d"
       ],
       "full_table_mapping": true,
@@ -968,9 +1107,9 @@
     },
     "tensorflow": {
       "apis": [
-        "tf.keras.layers.MaxPooling3D",
+        "tf.keras.layers.MaxPooling1D",
         "tf.keras.layers.MaxPooling2D",
-        "tf.keras.layers.MaxPooling1D"
+        "tf.keras.layers.MaxPooling3D"
       ],
       "full_table_mapping": false,
       "patterns": [
@@ -992,18 +1131,18 @@
     },
     "paddlepaddle": {
       "apis": [
-        "paddle.nn.MaxUnPool3D",
+        "paddle.nn.MaxUnPool1D",
         "paddle.nn.MaxUnPool2D",
-        "paddle.nn.MaxUnPool1D"
+        "paddle.nn.MaxUnPool3D"
       ],
       "full_table_mapping": null,
       "patterns": []
     },
     "pytorch": {
       "apis": [
-        "torch.nn.MaxUnpool3d",
+        "torch.nn.MaxUnpool1d",
         "torch.nn.MaxUnpool2d",
-        "torch.nn.MaxUnpool1d"
+        "torch.nn.MaxUnpool3d"
       ],
       "full_table_mapping": false,
       "patterns": [
@@ -1020,14 +1159,22 @@
   },
   "Min": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.minimum"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.minimum"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1053,15 +1200,19 @@
       "apis": [
         "mindspore.nn.Mish"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Mish"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1084,14 +1235,22 @@
   },
   "Mod": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.fmod"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.mod"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1114,14 +1273,22 @@
   },
   "Mul": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.mul"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.multiply"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1144,19 +1311,31 @@
   },
   "Neg": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.neg"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.neg"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "torch.neg"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "tensorflow": {
       "apis": [],
@@ -1169,15 +1348,19 @@
       "apis": [
         "mindspore.nn.PReLU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.PReLU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1200,14 +1383,22 @@
   },
   "Pow": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.pow"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.pow"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1252,14 +1443,22 @@
   },
   "Reciprocal": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.reciprocal"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.reciprocal"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1282,14 +1481,22 @@
   },
   "ReduceMax": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.max"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.max"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1312,14 +1519,22 @@
   },
   "ReduceMean": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.mean"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.mean"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1342,14 +1557,22 @@
   },
   "ReduceMin": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.min"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.mi"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1372,14 +1595,22 @@
   },
   "ReduceProd": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.prod"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.prod"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1402,14 +1633,22 @@
   },
   "ReduceSum": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.sum"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.sum"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1435,15 +1674,19 @@
       "apis": [
         "mindspore.nn.ReLU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.ReLU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1502,14 +1745,22 @@
   },
   "Round": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.round"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.round"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1535,15 +1786,19 @@
       "apis": [
         "mindspore.nn.SeLU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.SELU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1571,15 +1826,19 @@
       "apis": [
         "mindspore.nn.Sigmoid"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Sigmoid"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1608,16 +1867,22 @@
         "mindspore.nn.Softmax2d",
         "mindspore.nn.Softmax"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Softmax",
         "paddle.nn.Softmax2D"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)",
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1654,8 +1919,10 @@
       "apis": [
         "paddle.nn.Softplus"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1683,15 +1950,19 @@
       "apis": [
         "mindspore.nn.Softsign"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Softsign"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1716,14 +1987,22 @@
   },
   "Sub": {
     "mindspore": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "mindspore.ops.subtract"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "paddlepaddle": {
-      "apis": [],
-      "full_table_mapping": null,
-      "patterns": []
+      "apis": [
+        "paddle.subtract"
+      ],
+      "full_table_mapping": true,
+      "patterns": [
+        "api(tensor+, *args)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1749,15 +2028,19 @@
       "apis": [
         "mindspore.nn.Tanh"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Tanh"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [
@@ -1790,8 +2073,10 @@
       "apis": [
         "paddle.nn.ThresholdedReLU"
       ],
-      "full_table_mapping": null,
-      "patterns": []
+      "full_table_mapping": true,
+      "patterns": [
+        "api(*args)(tensor)"
+      ]
     },
     "pytorch": {
       "apis": [],
@@ -1813,14 +2098,14 @@
       "apis": [
         "mindspore.nn.Upsample"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": false,
       "patterns": []
     },
     "paddlepaddle": {
       "apis": [
         "paddle.nn.Upsample"
       ],
-      "full_table_mapping": null,
+      "full_table_mapping": false,
       "patterns": []
     },
     "pytorch": {
