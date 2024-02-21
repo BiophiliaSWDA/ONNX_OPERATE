@@ -3,12 +3,12 @@
 ### 预计更新
 #### 1 `op_types_mapping.json`
 
-    1.1 `onnx2paddlepaddle`的API信息
-    1.2 `onnx2mindspore`的API信息
+    1.1 ✅ `onnx2paddlepaddle`的API信息
+    1.2 ✅ `onnx2mindspore`的API信息
 
 #### 2 `op_types_similarity.json`
 
-    2.1 更新选出的57个算子的相似度
+    2.1 ✅ 更新选出的57个算子的相似度
 
 #### 3 `parameter_infos.json`
 
