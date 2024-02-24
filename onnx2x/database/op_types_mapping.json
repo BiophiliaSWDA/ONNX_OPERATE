@@ -1567,7 +1567,7 @@
     },
     "paddlepaddle": {
       "apis": [
-        "paddle.mi"
+        "paddle.min"
       ],
       "full_table_mapping": true,
       "patterns": [
