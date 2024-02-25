@@ -1,5 +1,5 @@
 {
-  "Add":{
+  "Add": {
     "mindspore": {
       "mindspore.ops.add": {
         "input": {

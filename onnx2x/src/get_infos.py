@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-@Title   : 获取ms和paddle的参数infos填入parameter_infos.json
+@Title   : 获取ms和paddle的参数infos填入parameter_infos.json，并根据算子名称将mapping填入parameter_mapping.json
 @Time    : 2024/2/24 19:26
 @Author  : Biophilia Wu
 @Email   : BiophiliaSWDA@163.com
@@ -12,7 +12,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-from onnx2x.config.config_path import OPS_MAPPINGS_PATH, PARAMETER_INFOS_PATH
+from onnx2x.config.config_path import OPS_MAPPINGS_PATH, PARAMETER_INFOS_PATH, PARAMETER_MAPPINGS_PATH
 
 ms_root_url = "https://www.mindspore.cn/docs/en/r2.2/api_python"
 pd_root_url = "https://www.paddlepaddle.org.cn/documentation/docs/en/api"
@@ -114,7 +114,7 @@ def get_response(url):
     return soup
 
 
-if __name__ == "__main__":
+def get_infos():
     with open(OPS_MAPPINGS_PATH, 'r') as f:
         ops_mappings = json.load(f)
     ms_params_infos = {}
@@ -149,3 +149,51 @@ if __name__ == "__main__":
 
     with open(PARAMETER_INFOS_PATH, 'w') as f:
         json.dump(parameter_infos, f, sort_keys=True)
+
+
+if __name__ == "__main__":
+    with open(PARAMETER_INFOS_PATH, 'r') as f:
+        parameter_infos = json.load(f)
+
+    with open(PARAMETER_MAPPINGS_PATH, 'r') as file:
+        parameter_mappings = json.load(file)
+
+    for onnx2x in parameter_infos.items():
+        onnx_name = onnx2x[0]
+        onnx_params = list(onnx2x[1]['onnx'].keys())
+        ms_apis = list(onnx2x[1]['mindspore'].keys())
+        pd_apis = list(onnx2x[1]['paddlepaddle'].keys())
+
+        ms_pa_mapping = {}
+        pd_pa_mapping = {}
+
+        parameter_mappings[onnx_name]["mindspore"] = {}
+        parameter_mappings[onnx_name]["paddlepaddle"] = {}
+
+        for ms_api in ms_apis:
+            ms_params = list(onnx2x[1]['mindspore'][ms_api].keys())
+            for onnx_param in onnx_params:
+                if onnx_param == "kernel_shape" and "kernel_size" in ms_params:
+                    ms_pa_mapping["kernel_shape"] = "kernel_size"
+                elif onnx_param == "strides" and "stride" in ms_params:
+                    ms_pa_mapping["strides"] = "stride"
+                else:
+                    ms_pa_mapping[onnx_param] = onnx_param if onnx_param in ms_params else None
+
+            parameter_mappings[onnx_name]["mindspore"][ms_api] = ms_pa_mapping
+
+        for pd_api in pd_apis:
+            pd_params = list(onnx2x[1]['paddlepaddle'][pd_api].keys())
+            for onnx_param in onnx_params:
+                if onnx_param == "kernel_shape" and "kernel_size" in pd_params:
+                    pd_pa_mapping["kernel_shape"] = "kernel_size"
+                elif onnx_param == "strides" and "stride" in pd_params:
+                    pd_pa_mapping["strides"] = "stride"
+                else:
+                    pd_pa_mapping[onnx_param] = onnx_param if onnx_param in pd_params else None
+
+            parameter_mappings[onnx_name]["paddlepaddle"][pd_api] = pd_pa_mapping
+
+
+    with open(PARAMETER_MAPPINGS_PATH, 'w') as file:
+        json.dump(parameter_mappings, file, sort_keys=True)
